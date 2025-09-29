@@ -1,3 +1,7 @@
+//Working calculator project
+g00462517
+Ben Ryan
+
 package ie.atu;
 
 import java.util.Scanner;
