@@ -1,17 +1,49 @@
 package ie.atu;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class MainApp {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Please enter your 1st number: ");
+        int firstNumber = scan.nextInt();
+        System.out.println("Please enter your 2nd number: ");
+        int secondNumber = scan.nextInt();
+
+        int result = 0;
+
+        System.out.println("Please pick an operation + - * /:");
+        char operation =  scan.next().charAt(0);
+
+        Calculator calc = new Calculator();
+        if (operation == '+') {
+            result = calc.add(firstNumber, secondNumber);
         }
+        else if (operation == '-') {
+            result = calc.sub(firstNumber, secondNumber);
+        }
+        else if (operation == '*') {
+            result = calc.multiply(firstNumber,secondNumber);
+        }
+        else if (operation == '/') {
+            if(secondNumber == 0) {
+                System.out.println("Cannot divide by zero please try again");
+                System.out.println("Please enter your 2nd number: ");
+                secondNumber = scan.nextInt();
+            }
+            result = calc.divide(firstNumber,secondNumber);
+        }
+        else{
+            System.out.println("Invalid operation!");
+            return;
+        }
+
+        System.out.println("The result is: " + result);
+
+
     }
+
+
+
 }
